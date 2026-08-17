@@ -9,8 +9,10 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN pip install "setuptools<82"
+
 RUN opentelemetry-bootstrap -a install 
 
-ENV RECOMMENDATION_PORT 1010
+ENV RECOMMENDATION_PORT=1010
 
 ENTRYPOINT ["python", "recommendation_server.py"]
